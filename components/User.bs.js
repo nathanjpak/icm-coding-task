@@ -3,7 +3,20 @@
 import * as React from "react";
 
 function User(props) {
-  return React.createElement("div", undefined, React.createElement("p", undefined, "Name: " + props.fullName + ""), React.createElement("p", undefined, "Username: " + props.username + ""), React.createElement("p", undefined, "Company: " + props.companyName + ""));
+  var borderClassString = props.isLastElement ? "" : "shadow-bottom-border md:shadow-bottom-border-md";
+  return React.createElement("div", {
+              className: "text-main py-3 md:text-xl md:py-6 " + borderClassString + ""
+            }, React.createElement("p", {
+                  className: "text-xl font-semibold md:text-3xl"
+                }, props.fullName), React.createElement("div", undefined, React.createElement("p", {
+                      className: "inline text-secondary"
+                    }, "Username: "), React.createElement("p", {
+                      className: "inline"
+                    }, props.username)), React.createElement("div", undefined, React.createElement("p", {
+                      className: "inline text-secondary"
+                    }, "Company: "), React.createElement("p", {
+                      className: "inline"
+                    }, props.companyName)));
 }
 
 var make = User;
