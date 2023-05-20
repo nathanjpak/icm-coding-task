@@ -2,6 +2,6 @@
 let default = () => {
   <div>
     <Next.Link href="/Users"> {React.string("Users")} </Next.Link>
-    <Next.Link href="/Todo"> {React.string("Todo")} </Next.Link>
+    <Next.Link href="/Todos"> {React.string("Todos")} </Next.Link>
   </div>
 }

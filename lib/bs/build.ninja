@@ -4,7 +4,7 @@ rule astj
   command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsc.exe  -bs-v 10.1.4 -bs-jsx 4  -absname -bs-ast -o $out $i
 o bindings/Next.ast : astj ../../bindings/Next.res
 rule deps
-  command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsb_helper.exe -hash 40ec1e46e7a6951cdb112b43850eabb7 $in
+  command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsb_helper.exe -hash 6e19cc5f05cad3563b30224045bb58d8 $in
   restat = 1
 o bindings/Next.d : deps bindings/Next.ast
 rule mij
@@ -12,15 +12,18 @@ rule mij
   dyndep = 1
   restat = 1
 o bindings/Next.cmj bindings/Next.cmi ../../bindings/Next.bs.js : mij bindings/Next.ast
+o components/Todo.ast : astj ../../components/Todo.res
+o components/Todo.d : deps components/Todo.ast
+o components/Todo.cmj components/Todo.cmi ../../components/Todo.bs.js : mij components/Todo.ast
 o components/User.ast : astj ../../components/User.res
 o components/User.d : deps components/User.ast
 o components/User.cmj components/User.cmi ../../components/User.bs.js : mij components/User.ast
-o pages/Todo.ast : astj ../../pages/Todo.res
-o pages/Todo.d : deps pages/Todo.ast
-o pages/Todo.cmj pages/Todo.cmi ../../pages/Todo.bs.js : mij pages/Todo.ast
 o pages/index.ast : astj ../../pages/index.res
 o pages/index.d : deps pages/index.ast
 o pages/index.cmj pages/index.cmi ../../pages/index.bs.js : mij pages/index.ast
+o pages/Todos.ast : astj ../../pages/Todos.res
+o pages/Todos.d : deps pages/Todos.ast
+o pages/Todos.cmj pages/Todos.cmi ../../pages/Todos.bs.js : mij pages/Todos.ast
 o pages/Users.ast : astj ../../pages/Users.res
 o pages/Users.d : deps pages/Users.ast
 o pages/Users.cmj pages/Users.cmi ../../pages/Users.bs.js : mij pages/Users.ast

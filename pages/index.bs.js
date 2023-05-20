@@ -8,8 +8,8 @@ function Index$default(props) {
                   href: "/Users",
                   children: "Users"
                 }), React.createElement(Link, {
-                  href: "/Todo",
-                  children: "Todo"
+                  href: "/Todos",
+                  children: "Todos"
                 }));
 }
 
