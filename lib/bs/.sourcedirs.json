@@ -1,0 +1,1 @@
+{ "dirs" : [ "bindings" , "components" , "pages" , "pages/api" ] , "pkgs" : [ [ "@rescript/react" , "/home/nathan/Desktop/repos/icm-coding-task/node_modules/@rescript/react" ] ] , "generated" : [] }

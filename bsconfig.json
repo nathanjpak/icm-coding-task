@@ -1,0 +1,26 @@
+{
+  "name": "renext-app",
+  "sources": [
+    {
+      "dir": "pages",
+      "subdirs": true
+    },
+    {
+      "dir": "components",
+      "subdirs": true
+    },
+    {
+      "dir": "bindings",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "jsx": { "version": 4 },
+  "bs-dependencies": ["@rescript/react"]
+}

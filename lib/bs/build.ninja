@@ -1,0 +1,23 @@
+rescript = 1
+g_finger := /home/nathan/Desktop/repos/icm-coding-task/node_modules/@rescript/react/lib/ocaml/install.stamp
+rule astj
+  command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsc.exe  -bs-v 10.1.4 -bs-jsx 4  -absname -bs-ast -o $out $i
+o bindings/Next.ast : astj ../../bindings/Next.res
+rule deps
+  command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsb_helper.exe -hash 76d2b56c4c4d54f25cf640e19fa03b88 $in
+  restat = 1
+o bindings/Next.d : deps bindings/Next.ast
+rule mij
+  command = /home/nathan/Desktop/repos/icm-coding-task/node_modules/rescript/linux/bsc.exe -I pages/api -I pages -I components -I bindings -I /home/nathan/Desktop/repos/icm-coding-task/node_modules/@rescript/react/lib/ocaml   -bs-package-name renext-app -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o bindings/Next.cmj bindings/Next.cmi ../../bindings/Next.bs.js : mij bindings/Next.ast
+o pages/Todo.ast : astj ../../pages/Todo.res
+o pages/Todo.d : deps pages/Todo.ast
+o pages/Todo.cmj pages/Todo.cmi ../../pages/Todo.bs.js : mij pages/Todo.ast
+o pages/index.ast : astj ../../pages/index.res
+o pages/index.d : deps pages/index.ast
+o pages/index.cmj pages/index.cmi ../../pages/index.bs.js : mij pages/index.ast
+o pages/Users.ast : astj ../../pages/Users.res
+o pages/Users.d : deps pages/Users.ast
+o pages/Users.cmj pages/Users.cmi ../../pages/Users.bs.js : mij pages/Users.ast

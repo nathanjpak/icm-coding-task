@@ -1,0 +1,22 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o Next.cmi : cp ../bs/bindings/Next.cmi
+o Next.cmj : cp ../bs/bindings/Next.cmj
+o Next.cmt : cp ../bs/bindings/Next.cmt
+o Next.res : cp ../../bindings/Next.res
+o Todo.cmi : cp ../bs/pages/Todo.cmi
+o Todo.cmj : cp ../bs/pages/Todo.cmj
+o Todo.cmt : cp ../bs/pages/Todo.cmt
+o Todo.res : cp ../../pages/Todo.res
+o index.cmi : cp ../bs/pages/index.cmi
+o index.cmj : cp ../bs/pages/index.cmj
+o index.cmt : cp ../bs/pages/index.cmt
+o index.res : cp ../../pages/index.res
+o Users.cmi : cp ../bs/pages/Users.cmi
+o Users.cmj : cp ../bs/pages/Users.cmj
+o Users.cmt : cp ../bs/pages/Users.cmt
+o Users.res : cp ../../pages/Users.res
+build install.stamp : touch Next.cmi Next.cmj Todo.cmi Todo.cmj index.cmi index.cmj Users.cmi Users.cmj 

@@ -1,0 +1,24 @@
+{
+  "name": "icm-coding-task",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "re:build": "rescript build",
+    "re:start": "rescript build -w"
+  },
+  "dependencies": {
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "next": "13.4.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@rescript/react": "^0.11.0",
+    "rescript": "^10.1.4"
+  }
+}
