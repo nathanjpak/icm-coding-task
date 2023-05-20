@@ -23,7 +23,6 @@ let default = () => {
     let updateUsers = async url => {
       let response = await fetch(url)
       let json = await response->json
-      Js.log(json)
       setUsersArray(_ => json)
     }
 
@@ -33,12 +32,23 @@ let default = () => {
   }, );
 
   let listOfUsers = 
-    {Belt.Array.map(usersArray, (user) => <User key={Belt.Int.toString(user.id)} username=user.username fullName=user.name companyName=user.company.name />)}
+    {Belt.Array.mapWithIndex(usersArray, (index, user) => <User 
+      key={Belt.Int.toString(user.id)} 
+      username=user.username 
+      fullName=user.name 
+      companyName=user.company.name 
+      isLastElement={index + 1 == Belt.Array.length(usersArray)}
+    />)}
 
-  let loading = <div>
+  let loading = <div className="text-main">
     {React.string("Fetching Users...")}
   </div>
 
-  let result = (Belt.Array.length(usersArray) > 0) ? listOfUsers : [loading]
-  result
+  let result = (Belt.Array.length(usersArray) > 0) ? React.array(listOfUsers) : loading
+  <div className="flex flex-col items-center w-full max-w-screen-lg">
+    <Navbar />
+    <div className="flex flex-col">
+      result
+    </div>
+  </div>
 }

@@ -3,6 +3,7 @@
 import * as User from "../components/User.bs.js";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Navbar from "../components/Navbar.bs.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as JsxPPXReactSupport from "rescript/lib/es6/jsxPPXReactSupport.js";
 
@@ -16,26 +17,29 @@ function Users$default(props) {
           var updateUsers = async function (url) {
             var response = await fetch(url);
             var json = await response.json();
-            console.log(json);
             return Curry._1(setUsersArray, (function (param) {
                           return json;
                         }));
           };
           updateUsers("https://jsonplaceholder.typicode.com/users");
         }), []);
-  var listOfUsers = Belt_Array.map(usersArray, (function (user) {
+  var listOfUsers = Belt_Array.mapWithIndex(usersArray, (function (index, user) {
           return JsxPPXReactSupport.createElementWithKey(String(user.id), User.make, {
                       username: user.username,
                       fullName: user.name,
-                      companyName: user.company.name
+                      companyName: user.company.name,
+                      isLastElement: (index + 1 | 0) === usersArray.length
                     });
         }));
-  var loading = React.createElement("div", undefined, "Fetching Users...");
-  if (usersArray.length !== 0) {
-    return listOfUsers;
-  } else {
-    return [loading];
-  }
+  var loading = React.createElement("div", {
+        className: "text-main"
+      }, "Fetching Users...");
+  var result = usersArray.length !== 0 ? listOfUsers : loading;
+  return React.createElement("div", {
+              className: "flex flex-col items-center w-full max-w-screen-lg"
+            }, React.createElement(Navbar.make, {}), React.createElement("div", {
+                  className: "flex flex-col"
+                }, result));
 }
 
 var $$default = Users$default;

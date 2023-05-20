@@ -3,6 +3,7 @@ module Link = {
   external make: (
     ~href: string=?,
     ~_as: string=?,
+    ~className: string=?,
     ~replace: bool=?,
     ~shallow: bool=?,
     ~passHref: bool=?,

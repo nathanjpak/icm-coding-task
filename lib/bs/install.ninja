@@ -15,10 +15,10 @@ o User.cmi : cp ../bs/components/User.cmi
 o User.cmj : cp ../bs/components/User.cmj
 o User.cmt : cp ../bs/components/User.cmt
 o User.res : cp ../../components/User.res
-o index.cmi : cp ../bs/pages/index.cmi
-o index.cmj : cp ../bs/pages/index.cmj
-o index.cmt : cp ../bs/pages/index.cmt
-o index.res : cp ../../pages/index.res
+o Navbar.cmi : cp ../bs/components/Navbar.cmi
+o Navbar.cmj : cp ../bs/components/Navbar.cmj
+o Navbar.cmt : cp ../bs/components/Navbar.cmt
+o Navbar.res : cp ../../components/Navbar.res
 o Todos.cmi : cp ../bs/pages/Todos.cmi
 o Todos.cmj : cp ../bs/pages/Todos.cmj
 o Todos.cmt : cp ../bs/pages/Todos.cmt
@@ -27,4 +27,4 @@ o Users.cmi : cp ../bs/pages/Users.cmi
 o Users.cmj : cp ../bs/pages/Users.cmj
 o Users.cmt : cp ../bs/pages/Users.cmt
 o Users.res : cp ../../pages/Users.res
-build install.stamp : touch Next.cmi Next.cmj Todo.cmi Todo.cmj User.cmi User.cmj index.cmi index.cmj Todos.cmi Todos.cmj Users.cmi Users.cmj 
+build install.stamp : touch Next.cmi Next.cmj Todo.cmi Todo.cmj User.cmi User.cmj Navbar.cmi Navbar.cmj Todos.cmi Todos.cmj Users.cmi Users.cmj 
