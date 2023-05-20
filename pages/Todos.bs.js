@@ -14,12 +14,7 @@ var initialState = {
 };
 
 function reducer(state, action) {
-  if (action) {
-    return {
-            todos: state.todos,
-            inputValue: action._0
-          };
-  } else {
+  if (typeof action === "number") {
     return {
             todos: Belt_Array.concat(state.todos, [{
                     id: state.todos.length + 1 | 0,
@@ -29,6 +24,27 @@ function reducer(state, action) {
             inputValue: ""
           };
   }
+  if (action.TAG === /* ChangeInput */0) {
+    return {
+            todos: state.todos,
+            inputValue: action._0
+          };
+  }
+  var index = action._0;
+  return {
+          todos: Belt_Array.mapWithIndex(state.todos, (function (arrIndex, todo) {
+                  if (arrIndex === index) {
+                    return {
+                            id: todo.id,
+                            title: todo.title,
+                            isCompleted: !todo.isCompleted
+                          };
+                  } else {
+                    return todo;
+                  }
+                })),
+          inputValue: state.inputValue
+        };
 }
 
 function Todos$default(props) {
@@ -37,7 +53,8 @@ function Todos$default(props) {
   var state = match[0];
   var handleChange = function ($$event) {
     var newValue = $$event.target.value;
-    Curry._1(dispatch, /* ChangeInput */{
+    Curry._1(dispatch, {
+          TAG: /* ChangeInput */0,
           _0: newValue
         });
   };
@@ -52,12 +69,19 @@ function Todos$default(props) {
                       }
                       
                     })
-                }, "Add Todo"), Belt_Array.map(state.todos, (function (todo) {
-                    return JsxPPXReactSupport.createElementWithKey(String(todo.id), Todo.make, {
-                                id: todo.id,
-                                title: todo.title,
-                                isCompleted: todo.isCompleted
-                              });
+                }, "Add Todo"), Belt_Array.mapWithIndex(state.todos, (function (index, todo) {
+                    return React.createElement("div", {
+                                onClick: (function (param) {
+                                    Curry._1(dispatch, {
+                                          TAG: /* MarkComplete */1,
+                                          _0: index
+                                        });
+                                  })
+                              }, JsxPPXReactSupport.createElementWithKey(String(todo.id), Todo.make, {
+                                    id: todo.id,
+                                    title: todo.title,
+                                    isCompleted: todo.isCompleted
+                                  }));
                   })));
 }
 

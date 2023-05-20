@@ -3,8 +3,11 @@
 import * as React from "react";
 
 function Todo(props) {
-  var isCompletedString = props.isCompleted ? "Yes" : "No";
-  return React.createElement("div", undefined, React.createElement("p", undefined, "Id: " + String(props.id) + ""), React.createElement("p", undefined, "" + props.title + ""), React.createElement("p", undefined, "Completed? " + isCompletedString + ""));
+  return React.createElement("div", undefined, React.createElement("p", undefined, "Id: " + String(props.id) + ""), React.createElement("p", undefined, "" + props.title + ""), React.createElement("div", undefined, "Completed?: ", React.createElement("input", {
+                      checked: props.isCompleted,
+                      disabled: true,
+                      type: "checkbox"
+                    })));
 }
 
 var make = Todo;
