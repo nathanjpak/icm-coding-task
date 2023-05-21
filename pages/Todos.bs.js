@@ -3,8 +3,8 @@
 import * as Todo from "../components/Todo.bs.js";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as Navbar from "../components/Navbar.bs.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
-import * as JsxPPXReactSupport from "rescript/lib/es6/jsxPPXReactSupport.js";
 
 var initialState_todos = [];
 
@@ -58,26 +58,37 @@ function Todos$default(props) {
           _0: newValue
         });
   };
-  return React.createElement("div", undefined, React.createElement("div", undefined, "Todo List"), React.createElement("input", {
-                  type: "text",
-                  value: state.inputValue,
-                  onChange: handleChange
-                }), React.createElement("button", {
-                  onClick: (function (param) {
-                      if (state.inputValue.length > 0) {
-                        return Curry._1(dispatch, /* AddTodo */0);
-                      }
-                      
-                    })
-                }, "Add Todo"), Belt_Array.mapWithIndex(state.todos, (function (index, todo) {
+  return React.createElement("div", {
+              className: "flex flex-col items-center gap-4 w-full max-w-screen-lg text-main"
+            }, React.createElement(Navbar.make, {}), React.createElement("div", {
+                  className: "text-2xl font-medium"
+                }, "To-do List"), React.createElement("div", {
+                  className: "flex flex-col items-center gap-1.5 w-full"
+                }, React.createElement("input", {
+                      className: "text-lg p-0.5 border border-secondary focus:border-main w-4/5 min-w-[280px]",
+                      placeholder: "Enter to-do...",
+                      type: "text",
+                      value: state.inputValue,
+                      onChange: handleChange
+                    }), React.createElement("button", {
+                      className: "ml-2 hover:bg-main hover:text-bg-color p-1.5 rounded text-lg",
+                      onClick: (function (param) {
+                          if (state.inputValue.length > 0) {
+                            return Curry._1(dispatch, /* AddTodo */0);
+                          }
+                          
+                        })
+                    }, "Add To-do")), Belt_Array.mapWithIndex(state.todos, (function (index, todo) {
                     return React.createElement("div", {
+                                key: String(todo.id),
+                                className: "w-4/5 min-w-[280px]",
                                 onClick: (function (param) {
                                     Curry._1(dispatch, {
                                           TAG: /* MarkComplete */1,
                                           _0: index
                                         });
                                   })
-                              }, JsxPPXReactSupport.createElementWithKey(String(todo.id), Todo.make, {
+                              }, React.createElement(Todo.make, {
                                     id: todo.id,
                                     title: todo.title,
                                     isCompleted: todo.isCompleted

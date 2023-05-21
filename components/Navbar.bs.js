@@ -13,7 +13,7 @@ function Navbar(props) {
                 }), React.createElement(Link, {
                   href: "/Todos",
                   className: "py-1 px-4 hover:text-main",
-                  children: "Todos"
+                  children: "To-dos"
                 }));
 }
 

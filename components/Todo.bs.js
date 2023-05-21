@@ -3,10 +3,18 @@
 import * as React from "react";
 
 function Todo(props) {
-  return React.createElement("div", undefined, React.createElement("p", undefined, "Id: " + String(props.id) + ""), React.createElement("p", undefined, "" + props.title + ""), React.createElement("div", undefined, "Completed?: ", React.createElement("input", {
-                      checked: props.isCompleted,
-                      disabled: true,
-                      type: "checkbox"
+  var checkMarkClassString = props.isCompleted ? "after:absolute after:h-5 after:w-8 after:bottom-1/4 after:border-b-8 after:border-l-8 after:-rotate-45" : "";
+  var checkBoxClassString = "h-8 w-8 border relative " + checkMarkClassString + "";
+  return React.createElement("div", {
+              className: "hover:bg-main/20 flex w-full py-2 items-center divide-x divide-secondary"
+            }, React.createElement("div", {
+                  className: "grow basis-0 text-center"
+                }, "Id: " + String(props.id) + ""), React.createElement("div", {
+                  className: "grow basis-1/2 text-xl px-2"
+                }, "" + props.title + ""), React.createElement("div", {
+                  className: "grow basis-0 flex justify-center"
+                }, React.createElement("div", {
+                      className: checkBoxClassString
                     })));
 }
 
