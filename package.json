@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "re:build": "rescript build",
-    "re:start": "rescript build -w"
+    "re:start": "rescript build -w",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "eslint": "8.41.0",

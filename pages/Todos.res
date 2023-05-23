@@ -7,11 +7,13 @@ type todo = {
 type state = {
   todos: array<todo>,
   inputValue: string,
+  latestId: int,
 }
 
 let initialState: state = {
   todos: [],
   inputValue: "",
+  latestId: 0,
 }
 
 type actions = AddTodo | ChangeInput(string) | MarkComplete(int)
@@ -21,10 +23,11 @@ let reducer = (state, action) => {
   | AddTodo => {
       inputValue: "",
       todos: Belt.Array.concat(state.todos, [{
-        id: Belt.Array.length(state.todos) + 1,
+        id: state.latestId + 1,
         title: state.inputValue,
         isCompleted: false
-      }])
+      }]),
+      latestId: state.latestId + 1
     }
   | ChangeInput(newValue) => {
       ...state,
